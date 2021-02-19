@@ -19,14 +19,13 @@ public interface PostController {
         String url = properties.getProperty("server.url");
 
         while (true) {
-            LOGGER.debug("Interval set to : " + interval);
+            LOGGER.debug("Interval set to : " + interval + " milliseconds");
             Thread.sleep(interval);
             StringBuilder json = new StringBuilder();
             json.append("{");
             json.append("\"cpu\":\"").append(CPU.USEAGE.get()).append("\",");
             json.append("\"instance\":\"" + instanceName + "\"");
             json.append("}");
-            LOGGER.debug("url: " + url + " JSON : " + json);
             WebClient.POST.accept(url, json);
         }
 
