@@ -20,7 +20,7 @@ public interface WebClient {
         try {
             post.setEntity(new StringEntity(data.toString()));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
         try {
             try (CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -30,7 +30,7 @@ public interface WebClient {
                 LOGGER.debug("POST STATUS :" + statusCode);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
         }
     };
 }
