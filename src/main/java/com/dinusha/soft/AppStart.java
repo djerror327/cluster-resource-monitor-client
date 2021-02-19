@@ -1,26 +1,17 @@
 package com.dinusha.soft;
 
-import com.dinusha.soft.http.client.WebClient;
-import com.dinusha.soft.utills.CPU;
+import com.dinusha.soft.controller.PostController;
+import org.apache.log4j.Logger;
 
 public interface AppStart {
+    Logger LOGGER = Logger.getLogger(AppStart.class);
 
     static void main(String[] args) {
-
-        for (int i = 0; i < 100000000; i++) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(CPU.USEAGE.get());
-
-            StringBuilder json = new StringBuilder();
-            json.append("{");
-            json.append("\"cpu\":\"").append(CPU.USEAGE.get()).append("\",");
-            json.append("\"instance\":\"Server1\"");
-            json.append("}");
-            WebClient.POST.accept("http://localhost:8888/v1/cpu", json);
+        LOGGER.info("cluster-resource-monitor-client App started");
+        try {
+            PostController.Post();
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getStackTrace());
         }
     }
 }
