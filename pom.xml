@@ -6,7 +6,7 @@
 
     <groupId>com.dinusha.soft</groupId>
     <artifactId>cluster-resource-monitor-client</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -38,7 +38,7 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <copy file="${basedir}/target/*.jar"
+                                <copy file="${basedir}/target/${project.artifactId}-${project.version}.jar"
                                       todir="${basedir}/deploy/cluster-resource-monitor-client"/>
                                 <copy file="${basedir}/cluster-resource-monitor-client.bat"
                                       todir="${basedir}/deploy/cluster-resource-monitor-client"/>
