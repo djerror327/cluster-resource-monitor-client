@@ -40,6 +40,9 @@
                             <tasks>
                                 <copy file="${basedir}/target/${project.artifactId}-${project.version}.jar"
                                       todir="${basedir}/deploy/cluster-resource-monitor-client"/>
+                                <copy todir="${basedir}/deploy/cluster-resource-monitor-client/libs">
+                                    <fileset dir="${basedir}/target/libs" includes="**"/>
+                                </copy>
                                 <copy file="${basedir}/cluster-resource-monitor-client.bat"
                                       todir="${basedir}/deploy/cluster-resource-monitor-client"/>
                                 <copy file="${basedir}/start.bat"
