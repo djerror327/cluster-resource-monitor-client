@@ -23,7 +23,7 @@ public interface PostController {
             Thread.sleep(interval);
             StringBuilder json = new StringBuilder();
             json.append("{");
-            json.append("\"cpu\":\"").append(CPU.USEAGE.get()).append("\",");
+            json.append("\"cpu\":\"").append(CPU.USAGE.getAsInt()).append("\",");
             json.append("\"instance\":\"" + instanceName + "\"");
             json.append("}");
             WebClient.POST.accept(url, json);
